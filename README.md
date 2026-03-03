@@ -1,4 +1,4 @@
-# spl-lint
+# 🔍🧹 spl-lint
 
 A linter for Splunk Search Processing Language (SPL / SPL2).
 
