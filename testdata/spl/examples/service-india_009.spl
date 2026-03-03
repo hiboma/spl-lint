@@ -1,0 +1,3 @@
+index="idx_india_events"
+| eval @ip=actor_ip
+| where action="user.promote"

@@ -1,0 +1,1 @@
+index=authentication action=success | streamstats count by username reset_on_change=true | where count > 5

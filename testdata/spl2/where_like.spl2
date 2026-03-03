@@ -1,0 +1,1 @@
+FROM main WHERE ipaddress LIKE "198.%" | stats count() BY ipaddress | sort count DESC

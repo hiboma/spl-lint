@@ -1,0 +1,1 @@
+index=sales | eval revenue_display="$"+tostring(revenue, "commas") | table product, revenue_display

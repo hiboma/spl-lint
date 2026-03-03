@@ -1,0 +1,12 @@
+index="idx_oscar_events" status=newAlert
+| dedup id
+| eval @id=id
+| eval @vendor='vendorInformation.provider'
+| spath path=fileStates{}.name output=file_names
+| makemv files
+| foreach mode=multivalue itemstr=<<Name>> iterstr=<<Iter>> file_names
+[ eval path=json_extract(_raw, "fileStates{<<Iter>>}.path"),
+         file=if(isnull(path), <<Name>>, path."\\".<<Name>>),
+         files=mvappend(files, file) ]
+| eval @hostname=upper(mvdedup('hostStates{}.fqdn'))
+| lookup host-lookup.csv hostname as @hostname OUTPUT email as @email

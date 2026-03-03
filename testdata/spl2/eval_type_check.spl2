@@ -1,0 +1,1 @@
+FROM main | eval t = typeof(value) | eval is_numeric = if(isint(value) OR isdouble(value), true, false) | stats count() BY t, is_numeric

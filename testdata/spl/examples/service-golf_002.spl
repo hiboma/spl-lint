@@ -1,0 +1,3 @@
+index="idx_golf_stream" metadata.eventType = "AutomatedLeadSummaryEvent"
+| eval @hostname=mvindex(split('event.Name', " "), 0, 0)
+| lookup host-lookup.csv hostname as @hostname OUTPUT email as @email

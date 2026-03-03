@@ -1,0 +1,3 @@
+index="idx_foxtrot_events" activityDisplayName="Delete user"
+| eval @email='initiatedBy.user.userPrincipalName'
+| eval @notice=substr('targetResources{}.userPrincipalName', length(replace('targetResources{}.id', "-", "")) + 1)

@@ -1,0 +1,7 @@
+index="idx_november" source="jamf://Computers"
+| dedup computer.general.id
+| eval a_week_ago = relative_time(now(), "-1w@w")
+| rename computer.general.last_contact_time as last_contact_time
+| eval last_contact_time_unix = strptime(last_contact_time,"%Y-%m-%d %H:%M:%S")
+| where last_contact_time_unix < a_week_ago
+| stats count

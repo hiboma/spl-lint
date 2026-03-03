@@ -1,0 +1,5 @@
+FROM main WHERE status >= 400 AND host IN ("web01", "web02")
+| eval severity = if(status >= 500, "critical", "warning")
+| stats count() AS error_count BY host, severity
+| sort error_count DESC
+| head 20

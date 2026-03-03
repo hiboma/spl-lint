@@ -1,0 +1,5 @@
+index="idx_alpha_events" country!="Japan"
+| eval @email='target_user.email'
+| eval @ip='client.ip_address'
+| eval @hostname='client.platform_name'
+| `temporary-ignored-by-email(@email)`

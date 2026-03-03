@@ -1,0 +1,2 @@
+index="idx_romeo_events" action IN ("private_channel_deleted", "public_channel_deleted")
+| eval @email='actor.user.email'

@@ -1,0 +1,4 @@
+index="idx_quebec_events" event_type_id="9"
+| eval @email='user_attributes.email'
+| eval @ip=ipaddr
+| iplocation ipaddr

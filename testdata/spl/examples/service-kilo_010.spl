@@ -1,0 +1,8 @@
+index="idx_kilo_audit" protoPayload.metadata.event{}.eventType=login
+| eval @email='protoPayload.authenticationInfo.principalEmail'
+| spath events{}
+| mvexpand events{}
+| regex "{\"boolValue\":true,\"label\":\"LABEL_OPTIONAL\",\"name\":\"is_suspicious\",\"type\":\"TYPE_BOOL\"}"
+| rex field=email mode=sed "s/@example.co.jp/@example.com/g"
+| lookup admin-users.csv email OUTPUT email
+| where email != ""

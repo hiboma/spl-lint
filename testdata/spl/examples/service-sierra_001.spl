@@ -1,0 +1,5 @@
+index="_audit" action="login attempt" method != SAML clientip != "127.0.0.1"
+| where NOT cidrmatch("10.0.0.0/8", clientip)
+| where clientip != "192.0.2.10" AND user != "automation-user" AND NOT like(useragent, "Vault%")
+| eval @ip=clientip
+| iplocation @ip

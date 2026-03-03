@@ -1,0 +1,1 @@
+index=web status=* | stats dc(eval(if(status=404, clientip, null()))) AS dc_ip_errors, count(eval(status>=500)) AS server_errors by host

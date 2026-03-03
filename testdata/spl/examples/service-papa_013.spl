@@ -1,0 +1,1 @@
+index="idx_whiskey_data" earliest=-24h | stats count | where count = 0

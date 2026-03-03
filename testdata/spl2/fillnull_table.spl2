@@ -1,0 +1,1 @@
+FROM main | stats sum(bytes) AS total BY host, status | fillnull value=0 total | table host, status, total

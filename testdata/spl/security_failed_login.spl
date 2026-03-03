@@ -1,0 +1,1 @@
+index=security sourcetype="WinEventLog:Security" EventCode=4625 | stats count by Account_Name, WorkstationName | where count > 15 | sort -count

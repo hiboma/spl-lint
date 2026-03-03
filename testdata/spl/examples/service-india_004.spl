@@ -1,0 +1,30 @@
+index="idx_india_events"
+| spath actor
+| spath actor_ip
+| spath actor_name
+| spath org
+| spath repository
+| eval @ip=actor_ip
+| search actor_location.country_name=*
+| search NOT actor_location.country_name IN ("Japan" , "")
+| search NOT (action="oauth_access.regenerate" AND application_name="AppOne")
+| search NOT (repository="org/app-a-ios" AND actor="bot-account" AND (action="git.clone" OR action="git.fetch"))
+| search NOT (repository="org/app-a-kmp" AND actor="bot-account" AND (action="git.clone"))
+| search NOT (repo="org/app-b-ios" AND (actor="bot-account" OR actor=""))
+| search NOT (repository="org/app-b-ios")
+| search NOT (actor="bot-account" AND org="service-b" AND controller="Api::PullComments")
+| search NOT (org="service-b" AND actor_ip="198.51.100.102" AND actor="bot-account" AND action="pull_request_review_comment.update")
+| search NOT (repository="org/project-ios" AND (action="git.clone" OR action="git.fetch"))
+| search NOT (repository="org/project-android" AND (action="git.clone" OR action="git.fetch") AND actor="developer1")
+| search NOT (repo="org/issue-reporters" AND action="issue.update")
+| search NOT (repo="org/ios-certificates" AND action="git.clone" )
+| lookup external_usernames username as name_id OUTPUT username as external_actor
+| lookup external_usernames username as actor OUTPUT username as external_actor
+| search NOT (actor_location.country_name = "Vietnam" AND external_actor != "")
+| search NOT ( actor="*devin[bot]" AND actor_ip IN ("198.51.100.1", "198.51.100.2", "198.51.100.3", "198.51.100.1"))
+| search NOT ( (actor_name="CodeRabbit" OR actor="coderabbit[bot]") AND (org="service-b" OR repository="org/service-b-*") AND actor_ip IN ("198.51.100.10" , "198.51.100.11") )
+| search NOT ( repo IN ("org/app-a-kmp", "org/app-a-ios", "org/mobile-certificates") AND actor_ip IN ("198.51.100.*", "198.51.100.*"))
+| search NOT ( actor_ip IN ("203.0.113.1", "203.0.113.2", "203.0.113.3", "203.0.113.4", "203.0.113.5", "203.0.113.6", "203.0.113.7", "203.0.113.8", "203.0.113.9", "203.0.113.10", "203.0.113.11") AND user_agent = "JIRA DVCS Connector Vertigo/1001.0.0-SNAPSHOT" AND action=user.failed_login)
+| lookup user-lookup.csv ghes_id as actor OUTPUT email as @email
+| `temporary-ignored-by-email(@email)`
+| `ignored-by-proxy-ipaddress(actor_ip)`

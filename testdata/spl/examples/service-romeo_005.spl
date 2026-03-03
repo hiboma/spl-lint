@@ -1,0 +1,2 @@
+index="idx_romeo_legacy" action IN ("role_change_to_admin", "role_change_to_owner")
+| eval @email='actor.user.email'

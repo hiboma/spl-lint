@@ -1,0 +1,5 @@
+index="idx_kilo_audit" "resource.labels.method"="google.login.LoginService.loginSuccess"
+| eval @email='protoPayload.authenticationInfo.principalEmail'
+| `temporary-ignored-by-email(@email)`
+| iplocation prefix=iploc_ allfields=true protoPayload.requestMetadata.callerIp
+| search iploc_Country != "Japan"

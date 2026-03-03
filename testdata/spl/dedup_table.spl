@@ -1,0 +1,1 @@
+index=security EventCode=4624 | dedup username | table _time, username, src_ip

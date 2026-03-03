@@ -1,0 +1,2 @@
+index="idx_golf_stream" event.OperationName="update_group"
+| iplocation event.UserIp

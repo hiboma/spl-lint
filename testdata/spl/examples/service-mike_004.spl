@@ -1,0 +1,2 @@
+index="idx_mike_events" activityType="Create MobileApp"
+| eval @email='actor.userPrincipalName'

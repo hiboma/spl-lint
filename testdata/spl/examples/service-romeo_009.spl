@@ -1,0 +1,2 @@
+index="idx_romeo_events" action="user_logout_non_compliant_mobile_app_version"
+| eval @email='actor.user.email'

@@ -1,0 +1,1 @@
+index=vpn "failure" OR "failed" | stats count by user, src_ip | where count > 30 | table user, src_ip, count

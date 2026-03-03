@@ -1,0 +1,3 @@
+index="idx_mike_events" activityType="Patch MobileApp"
+| eval @email='actor.userPrincipalName'
+| dedup @email

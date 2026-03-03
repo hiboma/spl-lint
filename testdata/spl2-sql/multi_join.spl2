@@ -1,0 +1,1 @@
+FROM orders AS o LEFT JOIN products AS p ON o.pid=p.productId LEFT JOIN suppliers AS s ON p.supplierId=s.supplier_id SELECT o._time, o.pid, p.product_name, p.supplierId, s.supplier_name, o.quantity

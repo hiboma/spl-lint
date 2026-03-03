@@ -1,0 +1,1 @@
+SELECT sum(bytes) AS total, host FROM main WHERE earliest=-5m GROUP BY host HAVING total > 1048576 ORDER BY total DESC

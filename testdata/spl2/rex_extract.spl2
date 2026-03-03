@@ -1,0 +1,1 @@
+FROM main | rex field=_raw "user=(?<username>\w+)" | stats count() BY username | sort count DESC | head 10

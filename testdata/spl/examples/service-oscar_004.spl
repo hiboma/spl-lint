@@ -1,0 +1,6 @@
+index="idx_oscar_events" status=resolved
+| dedup id
+| eval device=mvdedup('hostStates{}.fqdn')
+| where assignedTo == "Suppression Rule"
+| stats count by device
+| stats values values(count) as count, values(device) as device

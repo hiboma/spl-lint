@@ -1,0 +1,1 @@
+index=web sourcetype=access_combined | transaction session_id maxpause=30m | where duration > 3600 | table session_id, duration, eventcount

@@ -1,0 +1,1 @@
+FROM employees | eval full_name = first_name + " " + last_name | eval low_name = lower(full_name) | table full_name, low_name

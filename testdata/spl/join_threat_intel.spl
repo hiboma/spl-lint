@@ -1,0 +1,1 @@
+index=firewall action=blocked | stats count by src_ip | join src_ip [search index=threat_intel | table src_ip, threat_score] | where threat_score > 50

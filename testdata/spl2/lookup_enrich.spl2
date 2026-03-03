@@ -1,0 +1,1 @@
+FROM main | lookup user_info uid AS user_id OUTPUT department, manager | stats count() BY department, manager

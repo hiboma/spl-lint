@@ -1,0 +1,3 @@
+index="idx_foxtrot_events" activityDisplayName="Update StsRefreshTokenValidFrom Timestamp"
+| eval @email='initiatedBy.user.userPrincipalName'
+| eval @notice=if('initiatedBy.user.userPrincipalName' == "fim_password_service@example.onmicrosoft.com", "Self-Service パスワードリセット" ,"")

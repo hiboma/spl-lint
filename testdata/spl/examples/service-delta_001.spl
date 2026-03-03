@@ -1,0 +1,3 @@
+index="idx_delta_events"
+| eval @email=adminEmail
+| table @email, page, label, networkName, ssidName, oldValue, newValue

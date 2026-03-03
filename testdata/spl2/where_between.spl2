@@ -1,0 +1,1 @@
+FROM main WHERE bytes BETWEEN 1024 AND 1048576 | eval size_kb = bytes / 1024 | stats avg(size_kb) AS avg_kb BY host

@@ -1,0 +1,1 @@
+SELECT DISTINCT host, sourcetype FROM main WHERE status >= 400 ORDER BY host ASC

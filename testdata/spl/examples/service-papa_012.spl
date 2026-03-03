@@ -1,0 +1,1 @@
+index="idx_india_events" earliest=-3h | stats count | where count = 0

@@ -1,0 +1,2 @@
+index="idx_romeo_events" action="public_channel_converted_to_private"
+| eval @email='actor.user.email'

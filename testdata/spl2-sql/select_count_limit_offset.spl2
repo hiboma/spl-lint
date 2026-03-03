@@ -1,0 +1,1 @@
+SELECT count() AS cnt, host, _time FROM main WHERE sourcetype="webaccess" GROUP BY host, _time HAVING cnt > 10 ORDER BY cnt DESC LIMIT 50 OFFSET 20

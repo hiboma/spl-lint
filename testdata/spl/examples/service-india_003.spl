@@ -1,0 +1,16 @@
+index="idx_india_events" action="repo.download_zip"
+| eval @ip=actor_ip
+| search actor != ""
+| search actor != "dependabot[bot]"
+| search actor != "github-actions[bot]"
+| search actor != "service-a-token-app[bot]"
+| search actor != "hosting-token-app[bot]"
+| search actor != "org-token-app[bot]"
+| search actor != "org-token-app[bot]"
+| search actor != "corporate-token-app[bot]"
+| search actor != "service-b-controller-app[bot]"
+| search actor != "tech-token-app[bot]"
+| search actor != "bot-account"
+| search actor != "renovate[bot]"
+| search NOT (actor_ip="10.0.0.0/8")
+| search NOT (actor_ip="127.0.0.1")

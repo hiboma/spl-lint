@@ -1,0 +1,1 @@
+index=_internal source=*metrics* group=per_index_thruput series=* | eval MB = round(kb/1024,2) | timechart sum(MB) as MB by series

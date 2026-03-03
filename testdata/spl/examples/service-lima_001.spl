@@ -1,0 +1,3 @@
+index="idx_lima_events" event="dangerousDownloadEvent"
+| eval defanged_url=replace(url, "http", "hxxp")
+| eval defanged_url=replace(defanged_url, "\.", "[.]")

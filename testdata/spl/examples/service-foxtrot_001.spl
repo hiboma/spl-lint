@@ -1,0 +1,2 @@
+index="idx_foxtrot_events" activityDisplayName="Add user"
+| eval @email='initiatedBy.user.userPrincipalName'

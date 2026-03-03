@@ -1,0 +1,1 @@
+FROM main | rename usr AS username, dpt AS department | fields _time, username, department, action

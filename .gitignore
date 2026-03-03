@@ -1,0 +1,21 @@
+# Build
+/target
+
+# OS
+.DS_Store
+
+# Environment
+.env
+.env.*
+
+# Claude Code
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Development artifacts
+test.txt
+spl2-snapshot.md
+spl2-docs/
+

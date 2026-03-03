@@ -1,0 +1,1 @@
+FROM main AS m LEFT JOIN host_info AS h ON m.host=h.hostname WHERE h.kind!="internal" SELECT m.host, m.action, m.userID, h.kind, h.status GROUP BY m.host

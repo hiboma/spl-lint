@@ -1,0 +1,1 @@
+index=security EventCode=4625 | eval failed_login_time=strftime(_time, "%Y-%m-%d %H:%M:%S") | eval status=if(Account_Name="admin", "CRITICAL", "normal") | table failed_login_time, Account_Name, status

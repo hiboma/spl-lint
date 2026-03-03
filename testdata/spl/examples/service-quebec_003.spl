@@ -1,0 +1,5 @@
+index="idx_quebec_events" event_type_id="6"
+| eval @email='user_attributes.email'
+| eval @ip=ipaddr
+| iplocation ipaddr
+| search Country != "Japan"

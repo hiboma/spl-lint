@@ -1,0 +1,2 @@
+index="idx_romeo_events" action="user_password_reset_slack_security"
+| eval @email='actor.user.email'

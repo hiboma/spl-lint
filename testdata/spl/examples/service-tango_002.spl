@@ -1,0 +1,10 @@
+index="idx_tango_events"
+| dedup data.dstuser
+| lookup system_users username as data.dstuser OUTPUT id
+| where isNULL(id)
+| search NOT (data.dstuser = "service-a" AND agent.name = "bastion-1.example.internal")
+| search NOT (data.dstuser = "serverspec" AND agent.name = "bastion-1.example.internal")
+| search NOT (data.dstuser = "serverspec" AND agent.name = "bastion-2.example.internal")
+| search NOT (data.dstuser = "config-management-service" AND agent.name = "bastion-3.example.internal")
+| search NOT (data.dstuser = "drone" AND agent.name = "bastion-2" AND agent.labels.service = "service_example")
+| search NOT (data.dstuser = "ubuntu" AND agent.name = "bastion.node.example.internal")

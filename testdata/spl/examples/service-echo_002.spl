@@ -1,0 +1,4 @@
+index="idx_echo_events" status.errorCode=0 appDisplayName="Azure Portal"
+| where NOT ipAddress IN ("192.0.2.4", "192.0.2.5", "192.0.2.3")
+| eval @ip=ipAddress
+| eval @email=userPrincipalName

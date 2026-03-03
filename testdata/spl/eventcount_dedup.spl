@@ -1,0 +1,1 @@
+eventcount summarize=false index=* | dedup index | fields index

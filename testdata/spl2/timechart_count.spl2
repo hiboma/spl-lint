@@ -1,0 +1,1 @@
+FROM main WHERE status >= 400 | timechart span=1h count() BY host

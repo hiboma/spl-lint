@@ -1,0 +1,12 @@
+index="idx_golf_stream"
+| search NOT metadata.eventType IN ("AuthActivityAuditEvent","ScheduledReportNotificationEvent", "RemoteResponseSessionStartEvent", "RemoteResponseSessionEndEvent", "IncidentSummaryEvent", "DetectionSummaryEvent", "EppDetectionSummaryEvent", "AutomatedLeadSummaryEvent")
+| search NOT (metadata.eventType = "UserActivityAuditEvent" AND event.AuditKeyValues{}.ValueString = "cwpp-drift-indicators")
+| search NOT (metadata.eventType = "UserActivityAuditEvent" AND event.OperationName = "entities_updated" AND event.ServiceName = "customer_profile_entities")
+| search NOT (event.UserId = "detect.writer")
+| search NOT event.OperationName IN ("detection_update", "update_policy", "update_group", "detection_create")
+| search NOT ( event.UserIp = "192.0.2.1" AND metadata.eventType = "APIActivityAuditEvent")
+| search NOT ( event.OperationName = "logged" AND metadata.eventType = "APIActivityAuditEvent")
+| search NOT ( event.Attributes.user_agent = "Splunk_TA_*" AND metadata.eventType = "APIActivityAuditEvent")
+| search NOT (event.UserId = "CrowdStrike" AND event.ServiceName = "scheduled_reports" AND event.OperationName = "delete_report_execution" )
+| eval email=event.UserId
+| iplocation event.UserIp

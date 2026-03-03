@@ -1,0 +1,1 @@
+sourcetype=access_* | stats count(eval(method="GET")) AS GET, count(eval(method="POST")) AS POST by host

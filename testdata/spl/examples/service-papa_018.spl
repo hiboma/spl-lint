@@ -1,0 +1,1 @@
+index="idx_zulu_events" earliest=-24h | stats count | where count = 0

@@ -1,0 +1,2 @@
+index="idx_romeo_events" action="pref.*"
+| eval @email='actor.user.email'

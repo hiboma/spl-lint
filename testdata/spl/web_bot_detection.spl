@@ -1,0 +1,1 @@
+index=web sourcetype=access_combined | search user_agent="bot" OR user_agent="crawler" | stats count by user_agent, src_ip | sort -count

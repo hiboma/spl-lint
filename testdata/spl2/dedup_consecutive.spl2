@@ -1,0 +1,1 @@
+FROM main | dedup consecutive=true source, host | table _time, source, host

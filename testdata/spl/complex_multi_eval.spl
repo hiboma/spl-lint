@@ -1,0 +1,1 @@
+index=web sourcetype=access_combined | eval response_time_ms=response_time*1000 | eval response_class=case(response_time_ms<100, "fast", response_time_ms<500, "normal", response_time_ms<1000, "slow", 1=1, "very_slow") | stats avg(response_time_ms) as avg_ms, count by response_class, host | sort host, -avg_ms

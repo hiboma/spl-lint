@@ -1,0 +1,1 @@
+index=inventory | stats count by category, status | fillnull value=0 count | rename count as total_count, category as product_category

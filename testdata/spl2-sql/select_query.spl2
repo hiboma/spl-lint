@@ -1,0 +1,1 @@
+SELECT count() AS cnt, host FROM main WHERE status=200 GROUP BY host ORDER BY cnt DESC LIMIT 10

@@ -1,0 +1,4 @@
+index="idx_golf_stream" event.OperationName = "detection_create"
+| search NOT event.Attributes.product = "cwpp"
+| eval automated_lead_url = "https://edr.example.com/automated-leads/" + 'metadata.customerIDString' + ":automated-lead:" + 'metadata.customerIDString' + ":" + 'event.Attributes.aggregate_id'
+| eval detection_url      = "https://edr.example.com/automated-leads/" + 'event.Attributes.composite_id'

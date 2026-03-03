@@ -1,0 +1,5 @@
+index="idx_quebec_events" event_type_id="1100"
+| eval @email='user_attributes.email'
+| eval @ip=ipaddr
+| rex field=user_name mode=sed "s/^(\S+) (\S+)$/\2 \1/"
+| rex field=actor_user_name mode=sed "s/^(\S+) (\S+)$/\2 \1/"

@@ -1,0 +1,1 @@
+FROM main | iplocation src_ip | stats count() AS requests BY Country, City | sort requests DESC | head 20

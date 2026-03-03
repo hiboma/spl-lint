@@ -1,0 +1,1 @@
+FROM security_logs WHERE action="login_failed" AND src_ip IS NOT NULL | stats count() AS fail_count, dc(username) AS unique_users BY src_ip | where fail_count > 10 | eval severity = if(fail_count > 100, "critical", if(fail_count > 50, "high", "medium")) | sort fail_count DESC | head 50

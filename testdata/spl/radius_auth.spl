@@ -1,0 +1,1 @@
+index=authentication sourcetype=radius | stats count by username | where count > 10

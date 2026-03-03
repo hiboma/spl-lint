@@ -1,0 +1,1 @@
+FROM main | eval hashed_email = sha256(email) | eval hashed_ip = md5(src_ip) | table _time, hashed_email, hashed_ip, action

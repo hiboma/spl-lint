@@ -1,0 +1,5 @@
+index="idx_hotel_events" action="git.clone"
+| eval @email=external_identity_username
+| search actor != ""
+| search actor != "dependabot[bot]"
+| search actor != "github-actions[bot]"

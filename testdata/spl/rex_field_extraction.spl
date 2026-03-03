@@ -1,0 +1,1 @@
+index=web sourcetype=apache | rex field=_raw "status=(?<http_status>\d+)" | stats count by http_status

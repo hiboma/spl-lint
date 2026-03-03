@@ -1,0 +1,2 @@
+index="idx_romeo_events" action IN ("*_export_started", "*_export_completed", "*_export_downloaded", "*_export_deleted")
+| eval @email='actor.user.email'

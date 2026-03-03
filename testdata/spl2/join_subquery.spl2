@@ -1,0 +1,1 @@
+FROM main | join left=L right=R where L.product_id=R.product_id [FROM vendors] | table L.name, R.vendor_name

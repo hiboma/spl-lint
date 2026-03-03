@@ -1,0 +1,1 @@
+index="idx_golf_stream" earliest=-3h | stats count | where count = 0

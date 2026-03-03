@@ -1,0 +1,1 @@
+index=web sourcetype=access_combined | eval severity=case(status>=500, "critical", status>=400, "warning", status>=300, "redirect", 1=1, "ok") | stats count by severity

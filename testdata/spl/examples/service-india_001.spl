@@ -1,0 +1,2 @@
+index="idx_india_events" action="user.login"
+| search url != "https://git.example.com/saml/consume"

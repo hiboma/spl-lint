@@ -1,0 +1,2 @@
+index="idx_romeo_events" action="file_malicious_content_detected"
+| eval @email='actor.user.email'

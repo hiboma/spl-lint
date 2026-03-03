@@ -1,0 +1,1 @@
+FROM geometry | eval sum_of_areas = pi() * pow(radius_a, 2) + pi() * pow(radius_b, 2) | table name, sum_of_areas

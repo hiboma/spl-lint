@@ -1,0 +1,2 @@
+index="idx_kilo_audit" "resource.labels.method"="google.login.LoginService.govAttackWarning"
+| eval @email='protoPayload.authenticationInfo.principalEmail'

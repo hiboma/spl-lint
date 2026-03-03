@@ -1,0 +1,1 @@
+FROM main | stats count() AS total, per_second(count()) AS rps, per_minute(count()) AS rpm BY host | sort rps DESC

@@ -1,0 +1,2 @@
+index="idx_hotel_events" business != "acme-corp"
+| eval @email=external_identity_username

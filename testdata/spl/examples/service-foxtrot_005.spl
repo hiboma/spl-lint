@@ -1,0 +1,5 @@
+index="idx_foxtrot_events" activityDisplayName="Reset password (self-service)"
+| eval @email='initiatedBy.user.userPrincipalName'
+| eval @ip='initiatedBy.user.ipAddress'
+| iplocation @ip
+| eval @country=Country

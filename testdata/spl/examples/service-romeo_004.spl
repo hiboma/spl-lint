@@ -1,0 +1,6 @@
+index="idx_romeo_events" action="user_login*"
+| eval @email='actor.user.email'
+| eval @ip='context.ip_address'
+| `temporary-ignored-by-email(@email)`
+| iplocation @ip
+| search Country != "Japan"

@@ -1,0 +1,1 @@
+FROM main | stats sum(bytes) AS total_bytes, avg(bytes) AS avg_bytes BY host, sourcetype

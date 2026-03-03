@@ -1,0 +1,1 @@
+index="idx_mike_events" earliest=-24h | stats count | where count = 0

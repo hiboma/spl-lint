@@ -1,0 +1,1 @@
+FROM main | eventstats avg(response_time) AS global_avg BY host | eval deviation = response_time - global_avg | where deviation > 100

@@ -1,0 +1,1 @@
+FROM main | eval display_name = coalesce(full_name, username, "unknown") | where display_name IS NOT NULL | table display_name, email

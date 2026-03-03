@@ -1,0 +1,2 @@
+* |unknownCmd | stats | eval w = fooBarBaz(v) | stats count by host | status=200
+x=1 OR y=2 AND z=3

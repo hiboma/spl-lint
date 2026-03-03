@@ -1,0 +1,1 @@
+index=authentication action=failure [search index=threat_intel category=malicious | fields src_ip] | stats count by username, src_ip

@@ -1,0 +1,4 @@
+index="idx_echo_events" status.errorCode=50053
+| search NOT (riskLevelAggregated = None AND riskLevelDuringSignIn = None AND riskState = None )
+| eval @ip=ipAddress
+| eval @email=userPrincipalName

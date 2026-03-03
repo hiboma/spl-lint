@@ -1,0 +1,4 @@
+index="idx_echo_events" status.errorCode != 0 appDisplayName="Azure Portal"
+| eval @ip=ipAddress
+| eval @email=userPrincipalName
+| search NOT status.errorCode IN (0, 70043, 70044)

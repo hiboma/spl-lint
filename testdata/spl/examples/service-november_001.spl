@@ -1,0 +1,7 @@
+index="idx_november_webhooks" "webhook.webhookEvent"=ComputerCheckIn
+| eval event.computer.deviceName=replace('event.computer.deviceName', " \(\d+\)$", "")
+| eval @ip='event.computer.ipAddress'
+| iplocation event.computer.ipAddress
+| lookup host-lookup.csv hostname as event.computer.deviceName OUTPUT email as @email
+| `temporary-ignored-by-email(@email)`
+| where Country != "Japan"

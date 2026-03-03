@@ -1,0 +1,9 @@
+index="idx_golf_devices"
+| eval ip='falcon_device.external_ip'
+| eval hostname='falcon_device.hostname'
+| iplocation falcon_device.external_ip
+| search Country != "Japan"
+| lookup host-lookup.csv hostname OUTPUT email as @email
+| `temporary-ignored-by-email(@email)`
+| where NOT (hostname = "CPC-user1-XXXXX")
+| table _time, hostname, ip, Country, @email

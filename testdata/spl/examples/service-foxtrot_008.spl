@@ -1,0 +1,2 @@
+index="idx_foxtrot_events" activityDisplayName="Update conditional access policy"
+| eval @email='initiatedBy.user.userPrincipalName'

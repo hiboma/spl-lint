@@ -1,0 +1,2 @@
+index="idx_romeo_events" action IN ("user_session_reset_by_admin", "bulk_session_reset_by_admin")
+| eval @email='actor.user.email'

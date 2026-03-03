@@ -1,0 +1,3 @@
+index="idx_kilo_audit"
+| eval @email='protoPayload.authenticationInfo.principalEmail'
+| search resource.labels.method="google.login.LoginService.suspiciousLogin" OR resource.labels.method="google.login.LoginService.suspiciousLoginLessSecureApp" OR resource.labels.method="google.login.LoginService.suspiciousProgrammaticLogin"

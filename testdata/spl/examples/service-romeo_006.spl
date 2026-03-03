@@ -1,0 +1,2 @@
+index="idx_romeo_legacy" action="user_logout_compromised"
+| eval @email='actor.user.email'

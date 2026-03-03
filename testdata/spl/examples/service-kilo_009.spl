@@ -1,0 +1,4 @@
+index="idx_kilo_app_audit" host=drive "events{}.type"=access "events{}.name"=download
+| eval @email='actor.email'
+| stats count
+| where count >= 2000

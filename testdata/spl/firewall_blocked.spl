@@ -1,0 +1,1 @@
+index=security sourcetype=firewall action=blocked | stats count by src_ip | sort - count

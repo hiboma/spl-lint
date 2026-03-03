@@ -1,0 +1,1 @@
+FROM main WHERE (status=200 XOR action="purchase") AND host="web01" | stats count() BY action

@@ -1,0 +1,14 @@
+index="idx_kilo_app_audit"
+| eval @email='actor.email'
+| search host="token" "events{}.name"=authorize  "email" != "system-account@example.com"  "email" != "system-account@example.co.jp"
+| rex "{\"name\":\"app_name\",\"value\":\"(?<app_name>.*?)\"}"
+| rex "{\"name\":\"scope\",\"multi_value\":\[(?<scopes>.*?)\]}"
+| join
+    [search index="idx_kilo_app_audit" host="token" "events{}.name"=authorize  "email" != "system-account@example.com"  "email" != "system-account@example.co.jp" latest=-120d
+    | rex "{\"name\":\"app_name\",\"value\":\"(?<app_name>.*?)\"}"
+    | stats values(app_name)
+    | rename "values(app_name)" as app_names
+    | table app_names]
+| eval found = mvfind(app_names, app_name)
+| search NOT found="*"
+| search NOT app_name IN ("Google Analytics Demos \\u0026 Tools", "example-org")

@@ -1,0 +1,6 @@
+index="idx_tango_events"
+| iplocation data.srcip
+| where NOT cidrmatch("10.0.0.0/8", 'data.srcip')
+| where Country != "Japan"
+| lookup user-lookup.csv ghes_id as data.dstuser OUTPUT email as @email
+| table timestamp, data.dstuser, data.srcip, agent.name, agent.ip, Country, @email

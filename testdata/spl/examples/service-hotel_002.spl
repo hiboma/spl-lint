@@ -1,0 +1,9 @@
+index="idx_hotel_events"
+| eval @email=external_identity_username
+| search actor_location.country_code != "JP"
+| where user_agent != "Microsoft Azure AD SCIM provisioning"
+| where NOT actor IN ("github-actions[bot]", "dependabot[bot]")
+| search NOT (actor = "example-claude-assistant[bot]" AND actor_location.country_code = "US")
+| where NOT action IN ("oauth_access.regenerate", "repo.add_member")
+| where NOT programmatic_access_type = "Public Key (User/Deploy)"
+| search NOT (programmatic_access_type IN ("GitHub App server-to-server token", "GitHub App user-to-server token") AND actor_location.country_code = "US")

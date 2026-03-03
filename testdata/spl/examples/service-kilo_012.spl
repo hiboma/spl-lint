@@ -1,0 +1,8 @@
+index="idx_kilo_audit" "resource.labels.method"="google.login.LoginService.emailForwardingOutOfDomain"
+| spath input=protoPayload.requestMetadata.callerIp
+| rex field=_raw "{\"label\":\"LABEL_OPTIONAL\",\"name\":\"email_forwarding_destination_address\",\"type\":\"TYPE_STRING\",\"value\":\"(?<forward_address>.*?)\"}"
+| rename protoPayload.authenticationInfo.principalEmail as actor.email
+| regex forward_address=".*@(?!acme-corp.chat.example.com$)"
+| spath protoPayload.authenticationInfo.principalEmail
+| eval @email='protoPayload.authenticationInfo.principalEmail'
+| eval @ip='protoPayload.requestMetadata.callerIp'

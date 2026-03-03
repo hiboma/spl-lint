@@ -1,0 +1,11 @@
+index="idx_quebec_events" event_type_id="8"
+| lookup user-lookup.csv onelogin_id as user_id OUTPUT email as @email
+| eval @ip=ipaddr
+| iplocation ipaddr
+| search Country != "Japan"
+| lookup external_sso_usernames username as actor_user_name OUTPUT username as external_username
+| search NOT ( Country = "Vietnam" AND external_username != "" )
+| search NOT ( @email="*@example.vn" AND Country = "United States" AND app_name = "Zendesk" )
+| `temporary-ignored-by-email(@email)`
+| `ignored-by-proxy-ipaddress(ipaddr)`
+| rex field=actor_user_name mode=sed "s/^(\S+) (\S+)$/\2 \1/"

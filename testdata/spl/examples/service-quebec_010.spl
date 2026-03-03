@@ -1,0 +1,8 @@
+index="idx_quebec_events" event_type_id IN (179, 180, 181, 182)
+| eval @email='user_attributes.email'
+| eval @ip=ipaddr
+| iplocation ipaddr
+| eval @notice=if(event_type_id == 179, "作成", "")
+| eval @notice=if(event_type_id == 180, "削除", '@notice')
+| eval @notice=if(event_type_id == 181, "有効化", '@notice')
+| eval @notice=if(event_type_id == 182, "無効化", '@notice')

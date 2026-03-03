@@ -1,0 +1,1 @@
+index="idx_xray_cursor" earliest=-24h | stats count | where count = 0

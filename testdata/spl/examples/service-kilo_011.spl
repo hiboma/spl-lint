@@ -1,0 +1,4 @@
+index="idx_kilo_audit"
+| search "protoPayload.metadata.event{}.eventName"=CHANGE_CHROME_OS_USER_SETTING
+| eval @email='protoPayload.authenticationInfo.principalEmail'
+| spath events{}

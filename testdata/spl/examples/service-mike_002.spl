@@ -1,0 +1,2 @@
+index="idx_mike_events" activityType="windowsDefenderScan ManagedDevice"
+| eval @email='actor.userPrincipalName'

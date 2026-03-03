@@ -1,0 +1,11 @@
+index="idx_golf_stream"
+| search metadata.eventType = "AuthActivityAuditEvent"
+| search NOT event.ServiceName IN ("Crowdstrike Streaming API", "api_request", "LocalRTR")
+| dedup metadata.eventCreationTime
+| iplocation event.UserIp
+| stats values(event.OperationName) as event.OperationName,
+        values(event.ServiceName) as event.ServiceName,
+        values(event.UserId) as event.UserId,
+        values(event.UserIp) as event.UserIp,
+        values(City) as City,
+        values(Country) as Country

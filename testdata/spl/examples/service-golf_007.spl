@@ -1,0 +1,13 @@
+index="idx_golf_devices" earliest=-12h
+[search index="idx_november_webhooks" webhook.webhookEvent="ComputerCheckIn" earliest=-12h
+  | rename event.computer.deviceName as falcon_device.hostname
+  | stats count by falcon_device.hostname
+  | table falcon_device.hostname]
+| eval last_seen=strptime('falcon_device.last_seen',"%Y-%m-%dT%H:%M:%SZ")
+| rename falcon_device.hostname as hostname
+| eval a_two_week_ago = relative_time(now(), "-2w@w")
+| where last_seen < a_two_week_ago
+| dedup hostname
+| lookup host-lookup.csv hostname OUTPUT email, username, department, start_date, last_date
+| table hostname, email, username, department, start_date, last_date
+| stats count

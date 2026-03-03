@@ -1,0 +1,21 @@
+[package]
+name = "spl-lint"
+version = "0.1.0"
+edition = "2024"
+description = "A linter for Splunk Search Processing Language (SPL)"
+license = "MIT"
+readme = "README.md"
+keywords = ["splunk", "spl", "linter"]
+categories = ["command-line-utilities", "development-tools"]
+repository = "https://github.com/hiboma/spl-lint"
+homepage = "https://github.com/hiboma/spl-lint"
+rust-version = "1.85"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+miette = { version = "7", features = ["fancy"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+insta = { version = "1", features = ["yaml"] }

@@ -1,0 +1,1 @@
+FROM geodata | eval distance = hypot(x2 - x1, y2 - y1) | eval angle = atan2(y2 - y1, x2 - x1) | table name, distance, angle

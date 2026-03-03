@@ -1,0 +1,6 @@
+index="idx_quebec_events" event_type_id="19"
+| eval @email='user_attributes.email'
+| eval @ip=ipaddr
+| eventstats count by user_id
+| dedup ipaddr
+| iplocation ipaddr

@@ -1,0 +1,6 @@
+index="idx_bravo_events"
+| search "Assigned PPP Dynamic IPv4"
+| rex field=_raw "Client IP:\s(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+| eval @ip=ip
+| iplocation @ip
+| search Country != "Japan"

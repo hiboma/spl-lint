@@ -1,0 +1,5 @@
+index="idx_romeo_events" action="user_deactivated"
+| search actor.user.email = "botuser-*"
+| search NOT ( context.session_id = null AND context.ip_address = "" AND context.ua = "" )
+| eval @notice="bot ユーザーが無効化されました。意図した操作かどうか確認してください"
+| table actor.user.name, actor.user.email, @notice

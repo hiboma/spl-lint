@@ -1,0 +1,1 @@
+index=firewall | lookup geo_ip_lookup ip as src_ip OUTPUT country, city | stats count by country

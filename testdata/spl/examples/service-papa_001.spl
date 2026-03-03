@@ -1,0 +1,1 @@
+index="idx_kilo_app_audit" earliest=-3h | stats count | where count = 0

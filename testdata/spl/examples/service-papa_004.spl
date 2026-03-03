@@ -1,0 +1,1 @@
+index="idx_quebec_events" earliest=-3h | stats count | where count = 0

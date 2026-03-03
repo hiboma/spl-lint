@@ -1,0 +1,2 @@
+index="idx_foxtrot_events" activityDisplayName="Reset password (by admin)"
+| eval @email='initiatedBy.user.userPrincipalName'

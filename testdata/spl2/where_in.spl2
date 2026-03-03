@@ -1,0 +1,1 @@
+FROM main WHERE status IN (400, 401, 403, 404, 500) AND host IN ("web01", "web02", "web03") | stats count() AS error_count BY host, status

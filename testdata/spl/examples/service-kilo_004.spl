@@ -1,0 +1,6 @@
+index="idx_kilo_app_audit" host="mobile" "events{}.type"=device_applications
+| eval @email='actor.email'
+| rex "{\"name\":\"APPLICATION_STATE\",\"value\":\"(?<application_state>.*?)\"}"
+| rex "{\"name\":\"DEVICE_TYPE\",\"value\":\"(?<device_type>.*?)\"}"
+| rex "{\"name\":\"DEVICE_MODEL\",\"value\":\"(?<device_model>.*?)\"}"
+| where application_state = "PHA"

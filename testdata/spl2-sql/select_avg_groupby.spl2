@@ -1,0 +1,1 @@
+SELECT avg(cpu_usage) AS avg_usage, max(cpu_usage) AS peak_usage, host FROM metrics WHERE sourcetype="syslog" GROUP BY host ORDER BY avg_usage DESC LIMIT 20

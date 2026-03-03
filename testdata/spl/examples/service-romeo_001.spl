@@ -1,0 +1,5 @@
+index="idx_romeo_events" action="anomaly"
+| eval @email='actor.user.email'
+| search ("details.reason{}" != "asn") AND (NOT context.ip_address IN ("192.0.2.2", "192.0.2.3"))
+| search ("details.reason{}" != "excessive_file_shares") AND (actor.user.name != "accounting-bot")
+| search ( NOT ( "details.reason{}" = "user_agent" AND context.ua = "AppleCoreMedia/*" AND details.previous_ua  = "com.tinyspeck.*" ) )

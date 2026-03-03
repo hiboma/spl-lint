@@ -1,0 +1,1 @@
+FROM main | eval payload = json_extract(raw_json, "data.items") | eval keys = json_keys(payload) | eval is_valid = json_valid(raw_json) | where is_valid = true

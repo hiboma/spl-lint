@@ -1,0 +1,7 @@
+index="idx_lima_events" event="badNavigationEvent"
+| spath reason
+| search reason !="SSL_ERROR"
+| search ( url != "https://media.example-cdn.jp/wp-admin/*" OR ( url_category != "HOBBIES_AND_LEISURE__SPECIAL_OCCASIONS" AND url_category != "SHOPPING__CONSUMER_RESOURCES" ) )
+| eval @email=profile_user
+| eval defanged_url=replace(url, "http", "hxxp")
+| eval defanged_url=replace(defanged_url, "\.", "[.]")
