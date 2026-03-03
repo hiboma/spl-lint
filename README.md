@@ -2,6 +2,12 @@
 
 A linter for Splunk Search Processing Language (SPL / SPL2).
 
+<p align="center">
+──────────────────────────────────────────────────────────────────────────────────────────────<br>
+<strong>Beta</strong>: This tool is in beta. Syntax coverage and lint rules are still limited. Expect breaking changes.<br>
+──────────────────────────────────────────────────────────────────────────────────────────────
+</p>
+
 `spl-lint` takes SPL query strings and detects syntax errors, unknown commands, best-practice violations, and style issues.
 
 ## Installation
