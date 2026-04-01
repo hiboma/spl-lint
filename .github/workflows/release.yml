@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   build:
@@ -70,6 +72,12 @@ jobs:
       - name: Generate checksums
         run: sha256sum spl-lint-* > checksums-sha256.txt
 
+      - name: Install cosign
+        uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003 # v4.1.1
+
+      - name: Sign checksums with cosign (keyless)
+        run: cosign sign-blob --yes checksums-sha256.txt --output-signature checksums-sha256.txt.sig --output-certificate checksums-sha256.txt.pem
+
       - name: Create release
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         with:
@@ -77,3 +85,5 @@ jobs:
           files: |
             spl-lint-*
             checksums-sha256.txt
+            checksums-sha256.txt.sig
+            checksums-sha256.txt.pem
