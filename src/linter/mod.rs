@@ -331,6 +331,18 @@ mod tests {
         );
     }
 
+    #[test]
+    fn test_lint_leading_pipe_no_e001() {
+        let engine = LintEngine::new();
+        let diagnostics = engine.lint("| makeresults | eval x=1 | table x");
+        let e001: Vec<_> = diagnostics.iter().filter(|d| d.rule_id == "E001").collect();
+        assert!(
+            e001.is_empty(),
+            "leading pipe should not cause E001: {:?}",
+            e001
+        );
+    }
+
     // ---- production クエリ統合テスト ----
 
     #[test]
