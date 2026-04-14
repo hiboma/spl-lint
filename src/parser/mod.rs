@@ -103,6 +103,13 @@ impl Parser {
             });
         }
 
+        // 先頭が `|` の場合はスキップしてコマンドとして扱います
+        // (例: `| makeresults | eval ...` のような generating command パターン)
+        if matches!(self.peek(), TokenKind::Pipe) {
+            self.advance(); // 先頭の `|` を消費します
+            self.after_pipe = true;
+        }
+
         // 最初のステージをパースします
         // サブサーチ内では after_pipe=true のまま維持し、コマンドとして判定します
         // トップレベルでは after_pipe=false でフリーテキスト検索として判定します
@@ -1405,5 +1412,34 @@ mod tests {
             &query.stages[0].kind,
             StageKind::Search(SearchExpr::And(_, _))
         ));
+    }
+
+    #[test]
+    fn test_leading_pipe_generating_command() {
+        // `| makeresults` のような先頭パイプ付き generating command をパースできることを確認します
+        let query = parse_ok("| makeresults");
+        assert_eq!(query.stages.len(), 1);
+        if let StageKind::Command(cmd) = &query.stages[0].kind {
+            assert_eq!(cmd.name, "makeresults");
+        } else {
+            panic!("expected Command, got {:?}", query.stages[0].kind);
+        }
+    }
+
+    #[test]
+    fn test_leading_pipe_with_pipeline() {
+        // `| makeresults | eval x=1` のような先頭パイプ付きパイプラインをパースできることを確認します
+        let query = parse_ok("| makeresults | eval x=1");
+        assert_eq!(query.stages.len(), 2);
+        if let StageKind::Command(cmd) = &query.stages[0].kind {
+            assert_eq!(cmd.name, "makeresults");
+        } else {
+            panic!("expected Command for stage 0");
+        }
+        if let StageKind::Command(cmd) = &query.stages[1].kind {
+            assert_eq!(cmd.name, "eval");
+        } else {
+            panic!("expected Command for stage 1");
+        }
     }
 }
